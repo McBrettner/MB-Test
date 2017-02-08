@@ -1,0 +1,58 @@
+:host {
+	text-align: left;
+}
+
+.body {
+	text-align: left;
+	padding: 25px;
+	color: white;
+}
+
+.title {
+	color: white;
+}
+
+li {
+	padding-bottom: 1em;
+}
+
+ul {
+	list-style: none outside none;
+}
+
+.mind-map-header {
+	color: #ffffff;
+	padding-bottom: 20px;
+}
+
+.mind-map-box {
+	width: 100%;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+a.mind-map-link {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+}
+a.mind-map-link:hover #mindmaphelp {
+    opacity: 0.5;
+}
+
+#mindmaphelp {
+	height: auto;
+	width: 100%;
+	opacity: 0.3;
+}
+.open-icon {
+	color: white;
+	position: absolute;
+	top: 0;
+	margin: auto;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 1em;
+}
+

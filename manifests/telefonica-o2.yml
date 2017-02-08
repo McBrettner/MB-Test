@@ -1,0 +1,13 @@
+applications:
+- path: ..
+  memory: 512M
+  instances: 1
+  domain: mybluemix.net
+  name: telefonica-o2
+  host: telefonica-o2
+  disk_quota: 1024M
+  services:
+  - telefonica-o2-cloudantDB
+  command: node index.js
+  env:
+    NODE_ENV: production

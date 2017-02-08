@@ -1,0 +1,29 @@
+<div *ngIf="message.isFromUser()" class="message user-message">
+	<div class="content">
+		<div id="_{{id}}" class="text triangle right">
+			{{ message.data }}
+		</div>
+		<!--
+	  <render-content id="_{{id}}" class="text triangle right"></render-content>
+		-->
+		<div class="badge user-badge" [ngStyle]="{'background-image': getProfileImageLink()}">
+			<span *ngIf="!user || !user.UID">
+				{{ userInitials || 'U'  }}
+			</span>
+		</div>
+	</div>
+</div>
+<div *ngFor="let text of message.data; let i = index" [style.display]="isMessageEmpty(id, i)">
+	<div *ngIf="message.isFromWatson()" class="message watson-message">
+		<div class="badge watson-badge">
+			W
+		</div>
+		<div class="content">
+			<DynamicComponent [componentTemplate]="text" [componentModules]="dynamicComponentModules" id="_{{id}}_{{i}}" class="text triangle left" #messageContent>
+			</DynamicComponent>
+			<!--
+			<feedback *ngIf="lastNotEmptyMessage(i) && id !== 0 && id !== 1000" [message-context]="message.getContext"></feedback>
+			-->
+		</div>
+	</div>
+</div>

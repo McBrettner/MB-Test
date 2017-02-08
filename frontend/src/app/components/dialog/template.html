@@ -1,0 +1,85 @@
+<main class="content" #messageContainer>
+	<div class="or-spacer">
+		<div class="mask"></div>
+		<!--
+		<span><i>Watson Dialog</i></span>
+		-->
+	</div>
+
+<!--
+<h2 class="content-head is-center">Watson Dialog</h2>
+-->
+
+<div class="pure-g">
+	<div class="l-box block-center pure-u-5-6 pure-u-md-4-5 pure-u-lg-3-5">
+<!--
+		<h3 class="content-subhead">
+			<i class="fa fa-rocket"></i>
+			{{ 'dialogIntro' | translate }}
+		</h3>
+-->
+		<div>
+			<message *ngFor="let m of messages; let i = index" [message]="m" [id]="i" (customUserInput)="sendText($event.detail)" (addSuggestion)="addSuggestion($event.detail)">
+			</message>
+
+			<div *ngIf="loading" class="loader">
+				<message [message]="typingMessage" [id]="1000" class="typing-message">
+				</message>
+				<!--
+				<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+				<span class="sr-only">Loading...</span>
+				-->
+			</div>
+
+		</div>
+	</div>
+</div>
+</main>
+
+<div class="fixed pure-g" #fixedPanel>
+	<div class="l-box block-center pure-u-5-6 pure-u-md-4-5 pure-u-lg-3-5">
+	<form class="pure-form">
+		<fieldset>
+			<legend hidden>Ask Watson</legend>
+			<div class="pure-g conversation-compose">
+
+				<div class="pure-u-3-4 input-box">
+					<div *ngIf="_speechService.t2sToken" class="audio volume pure-u-1" [class.on]="audioOutput" (click)="audioSwitch()">
+						<i class="fa fa-volume-up" aria-hidden="true"></i>
+					</div>
+					<div *ngIf="loading && messages.length === 0" class="loader-initial">
+						<i class="fa fa-spinner fa-pulse fa-fw"></i>
+						<span class="sr-only">Loading...</span>
+					</div>
+					<label for="user-input-search" hidden>Ask Watson</label>
+					<input id="user-input-search" placeholder="" [(ngModel)]="userInput" #inputBox type="text" maxlength="500" name="user-input" autofocus>
+					<div class="microphone pure-u-1" [class.listening]="listening" (mousedown)="listenOnMicrophone();inputBox.value=''" (mouseup)="stopListenOnMicrophone()">
+						<i class="fa fa-microphone" aria-hidden="true"></i>
+					</div>
+				</div>
+
+				<div class="pure-u-1-4 pure-g send-button-box">
+					<button type="submit" class="send-button pure-u-1" (click)="sendText(userInput);userInput=''" [disabled]="!userInput">
+						<div class="circle">
+							<i class="fa fa-paper-plane" aria-hidden="true"></i>
+						</div>
+					</button>
+				</div>
+
+			</div>
+			<div class="pure-u-1 suggestions" *ngIf="suggestions.length">
+				For example:
+				<span *ngFor="let s of suggestions">
+					<buttoninput class="suggestion" (customUserInput)="sendText($event.detail)">{{ s }}</buttoninput>
+				</span>
+			</div>
+		</fieldset>
+	</form>
+
+	<footer class="footer l-box is-center">
+		<a class="certificate" href="https://35.157.108.217:7891/test" target="_blank"><i class="fa fa-file-text" aria-hidden="true"></i>Speech to text Certificate</a>
+		<br />
+		{{ 'footer' | translate }}
+	</footer>
+	</div>
+</div>

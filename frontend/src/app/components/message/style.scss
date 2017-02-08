@@ -1,0 +1,48 @@
+:host {
+	display: block;
+	text-align: left;
+	padding: 15px 60px 0px 60px;
+}
+:host .message {
+	margin-bottom: 20px;
+	.content {
+		background: #eee;
+		border-radius: 3px;
+		display: inline-block;
+		padding: 8px;
+		position: relative;
+		.text {
+		}
+	}
+}
+.user-message {
+	text-align: right;
+}
+.badge {
+	position: absolute;
+	margin-left: -70px;
+	margin-top: -0.9em;
+	display: inline-block;
+	background: #47586a;
+	color: white;
+	width: 2em;
+	height: 2em;
+	font-size: 1.5em;
+	font-weight: lighter;
+	border-radius: 50%;
+	text-align: center;
+	font-style: normal;
+	padding-top: 13px;
+}
+.badge.user-badge {
+	margin-left: 31px;
+	top: 0;
+	background: #1f8dd6;
+	background-repeat: no-repeat;
+	background-position: center;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
+	border: #888 1px solid;
+}

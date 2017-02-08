@@ -1,0 +1,21 @@
+<div class="rnr-response-container" [ngClass]="{'rnr-response-container__clicked': clicked}">
+	<div class="rnr-response-main" (click)="expand()">
+		<div class="rnr-response-content" [innerHTML]="content"></div>
+		<div class="rnr-response-help">click for more</div>
+	</div>
+	<div class="rnr-response-feedback" [ngClass]="{'feedback-ok': feedbackStatus, 'feedback-error': feedbackStatus === false}">
+		<span class="fa fa-thumbs-o-up rnr-response-reaction" title="this was helpful" (click)="sendFeedback('positive')"></span>
+		<span class="fa fa-thumbs-o-down rnr-response-reaction" title="this was not helpful" (click)="sendFeedback('negative')"></span>
+		<!--
+	  <span class="glyphicon glyphicon-trash rnr-response-reaction" title="this was not helpful" (click)="delete()" *ngIf="admin"></span>
+		-->
+		<div class="rnr-response-status rnr-response-status-ok">
+			<span class="glyphicon glyphicon-ok"></span><span>thanks!</span>
+		</div>
+		<div class="rnr-response-status rnr-response-status-error">
+			<span class="glyphicon glyphicon-exclamation-sign "></span><span>oops try again!</span>
+		</div>
+	</div>
+</div>
+
+<div #wrapper hidden="true"><ng-content></ng-content><div>

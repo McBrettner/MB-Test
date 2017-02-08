@@ -1,0 +1,48 @@
+<div class="body">
+	<h2 class="title">
+		{{ 'userInfo' | translate }}
+	</h2>
+	<!--
+	<img src="http://faces.tap.ibm.com/imagesrv/{{user.UID}}.jpg" alt="profile image">
+	-->
+
+	<table *ngIf="user">
+		<tr>
+			<td>{{ 'name' | translate }}:</td>
+			<td>{{ user.name }}</td>
+		</tr>
+		<tr *ngIf="user.emails">
+			<td>{{ 'email' | translate }}:</td>
+			<td *ngIf="!isArray(user.emails)">
+				<span class="email">
+					{{ user.emails }}
+					<br>
+				</span>
+			</td>
+			<td *ngIf="isArray(user.emails)" rowspan="[user.emails.length]">
+				<span *ngFor="let mail of user.emails" class="email">
+					{{ mail }}
+					<br>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td>UID:</td>
+			<td>{{ user.UID }}</td>
+		</tr>
+		<tr *ngIf="user.phones">
+			<td>{{ 'phones' | translate }}:</td>
+			<td rowspan="[user.phones.length]">
+				<span *ngFor="let phone of user.phones" class="phone">
+					{{ phone.name }}<br>
+					{{ 'exchangeDate' | translate }}: {{ printDate(phone.exchangeDate) }}
+					<br>
+				</span>
+			</td>
+		</tr>
+	</table>
+	<div *ngIf="!user" class="loader">
+		<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+		<span class="sr-only">Loading...</span>
+	</div>
+</div>

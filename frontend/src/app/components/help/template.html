@@ -1,0 +1,18 @@
+<div class="body">
+<nav *ngFor="let x of helpList">
+<h2 class="title">{{x.title}}</h2>
+<div ng-show="x.text !== ''"><p>{{x.text}}</p></div>
+<ul>
+ <li *ngFor="let item of x.list">{{item}}</li>
+</ul>
+</nav>
+
+	<h2 class="mind-map-header">{{ 'seeMindmap' | translate }}</h2>
+	<div class="mind-map-box">
+		<a href="assets/img/mind.pdf" class="mind-map-link" target="_blank">
+			<i class="fa fa-3x fa-search open-icon" aria-hidden="true"></i>
+			<img id="mindmaphelp" alt="mindmap" src="assets/img/mind.jpg">
+		</a>
+	</div>
+
+</div>

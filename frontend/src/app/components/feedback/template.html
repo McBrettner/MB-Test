@@ -1,0 +1,21 @@
+<div class="wrapper" [class.submitted]="submitted">
+	<form (ngSubmit)="send(true)" *ngIf="!submitted">
+		Correct reaction?
+		<button type="button" class="pure-button button feedback" (click)="rating=1;send(true)" [class.not-selected]="rating===0">
+			YES
+		</button>
+		<button type="button" class="pure-button button feedback" (click)="rating=0;send(false)" [class.not-selected]="rating===1">
+			NO
+		</button>
+		<span *ngIf="rating===0">
+			Give us your feedback:
+			<input type="text" [(ngModel)]="comment" name="comment" />
+			<button class="pure-button button feedback send" type="submit">
+				<i class="fa fa-send"></i>
+			</button>
+		</span>
+	</form>
+	<span *ngIf="submitted" class="thanks">
+		Thank you for your feedback!
+	</span>
+</div>
